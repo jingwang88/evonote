@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
+	debug: true,
 	entry: './src/main',
 	output: {
 		path: path.join(__dirname, './dist'),
@@ -39,25 +40,16 @@ module.exports = {
 			}
 		]
 	},
-	vue: {
-	    // ... other vue options
-	    loaders: {
-	      // load all <script> without "lang" attribute with coffee-loader
-	      js: 'babel-loader',
-	      css: 'less-loader',
-	      // load <template> directly as HTML string, without piping it
-	      // through vue-html-loader first
-	      html: 'html-loader'
-	    }
- 	},
 	babel: {
-		presets: ['es2015', 'stage-2']
+		presets: ['es2015', 'stage-2'],
+		plugins: ['transform-runtime']
 	},
 	resolve: {
 		extentions: ['','.js', '.vue'],
 		alias: {
 			filter: path.join(__dirname, './src/filters'),
-			components: path.join(__dirname, './src/components')
+			components: path.join(__dirname, './src/components'),
+			vue: 'vue/dist/vue.js'
 		}
 	},
 	devtool: '#eval-source-map'

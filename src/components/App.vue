@@ -10,7 +10,7 @@
 		name: 'App',
 		data () {
 			return {
-				name : 'sdfsfs'
+				
 			}
 		},
 		components: {Shortcuts}
